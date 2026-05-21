@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "Staff": {
+      "title": "Staff Member",
+      "description": "A staff member of the academy",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name" },
+        "role": { "type": "string", "description": "Job title or role" },
+        "department": { "type": "string", "description": "Department (e.g. Science, Arts)" },
+        "photo": { "type": "string", "description": "URL to the staff photo" },
+        "email": { "type": "string", "format": "email", "description": "Professional email" },
+        "phone": { "type": "string", "description": "Contact phone number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "role", "department", "email"]
+    },
+    "Event": {
+      "title": "School Event",
+      "description": "An upcoming event at the academy",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Event title" },
+        "date": { "type": "string", "format": "date", "description": "Event date" },
+        "time": { "type": "string", "description": "Event time" },
+        "category": { "type": "string", "description": "Event category (e.g. Academic, Sports, Arts)" },
+        "description": { "type": "string", "description": "Detailed description" },
+        "location": { "type": "string", "description": "Where the event takes place" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "date", "time", "category", "description", "location"]
+    },
+    "Admin": {
+      "title": "Administrator",
+      "description": "A user with administrative privileges",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email"]
+    }
+  },
+  "firestore": {
+    "/staff/{staffId}": {
+      "schema": "Staff",
+      "description": "Collection of staff members"
+    },
+    "/events/{eventId}": {
+      "schema": "Event",
+      "description": "Collection of school events"
+    },
+    "/admins/{adminId}": {
+      "schema": "Admin",
+      "description": "Authorized administrators"
+    }
+  }
+}
